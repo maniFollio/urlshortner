@@ -13,7 +13,7 @@ exports.postLongUrl = (req, res) => {
     const URL = new shortUrl({ longUrl, shortCode });
     URL.save().then(() => {
         console.log("Saved Long url and it's short code");
-        const shortUrlValue = `http://localhost:3001/${shortCode}`;;
+        const shortUrlValue = `${req.protocol}://${req.get('host')}/${shortCode}`;;
         res.render('home', {shortUrl : shortUrlValue});
     })
     .catch((err) =>{
