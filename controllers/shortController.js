@@ -7,8 +7,9 @@ exports.postLongUrl = (req, res) => {
     const longUrl = req.body.longUrl;
     console.log("Long Url:", longUrl);
 
-    const shortCode = Math.random().toString(36).substring(2, 8);
-    console.log(shortCode);
+    const randomPart = Math.random().toString(36).substring(2, 8);
+    const shortCode = `rcb.${randomPart}`;
+    // console.log(shortCode);
 
     const URL = new shortUrl({ longUrl, shortCode });
     URL.save().then(() => {
